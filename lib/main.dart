@@ -24,7 +24,7 @@ class PuzzleScreen extends StatefulWidget {
 
 class _PuzzleScreenState extends State<PuzzleScreen> {
   // Create a 3x3 puzzle
-  List<int> puzzle = List.generate(9, (index) => index);
+  List<int> puzzle = List.generate(16, (index) => index);
 
   @override
   void initState() {
@@ -58,7 +58,7 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
     int emptyIndex = getEmptySpaceIndex();
 
     // Check if the tile is adjacent to the empty space
-    if (index == emptyIndex - 1 || index == emptyIndex + 1 || index == emptyIndex - 3 || index == emptyIndex + 3) {
+    if (index == emptyIndex - 1 || index == emptyIndex + 1 || index == emptyIndex - 4|| index == emptyIndex + 4) {
       setState(() {
         // Swap the clicked tile with the empty space
         puzzle[emptyIndex] = puzzle[index];
@@ -99,9 +99,9 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
         children: [
           // Puzzle Grid
           GridView.builder(
-            itemCount: 9,
+            itemCount: 16,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
+              crossAxisCount: 4,
             ),
             itemBuilder: (context, index) {
               return GestureDetector(
